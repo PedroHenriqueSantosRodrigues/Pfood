@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:pepperoni/pepperoni.dart';
 
 class AllStoresWidgets extends StatefulWidget {
   const AllStoresWidgets({super.key});
@@ -10,10 +11,10 @@ class AllStoresWidgets extends StatefulWidget {
 class _AllStoresWidgetsState extends State<AllStoresWidgets> {
   @override
   Widget build(BuildContext context) {
-    return Container(
-      color:Colors.red,
-      child: Center(
-        child: Text('All Stores'),
-      ),);
+    return  ListView(
+            scrollDirection: Axis.horizontal,
+            shrinkWrap: true,
+            children: [CategoryListWidget()],
+              );
   }
-}
+} 
