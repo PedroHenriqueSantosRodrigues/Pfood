@@ -1,47 +1,80 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
 
-class CategoryListWidget extends StatefulWidget {
-  const CategoryListWidget({super.key});
+class CategoryListWidget extends StatelessWidget {
+  const CategoryListWidget({super.key, required this.items});
 
-  @override
-  State<CategoryListWidget> createState() => _CategoryListWidgetState();
-}
+  final List<CategoryListItem> items;
 
-class _CategoryListWidgetState extends State<CategoryListWidget> {
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: 150,
+    return SizedBox(
       width: MediaQuery.of(context).size.width,
-      child: ListView(
-        shrinkWrap: true,
-        scrollDirection: Axis.horizontal,
-        children: [
-          _CategoryItemWidget(),
-          _CategoryItemWidget(),
-      
-        ],
+      child: Wrap(
+        children: List.from(
+          items.map((item) => _CategoryItemWidget(item: item))
+        ),
       ),
     );
   }
 }
 
 class _CategoryItemWidget extends StatelessWidget {
-  const _CategoryItemWidget({super.key});
-
+  const _CategoryItemWidget({super.key, required this.item});
+  final CategoryListItem item;
   @override
   Widget build(BuildContext context) {
-    return Column(
-      mainAxisSize: MainAxisSize.min,
-      children: [
-        Image.network(
-          'https://s3-sa-east-1.amazonaws.com/deliveryon-uploads/products/traillerdoserginho/34_55c2ab9b72a92.png',
-          width: 100,
-          height: 100,
-          fit: BoxFit.contain,
+    return SizedBox(
+      width: MediaQuery.of(context).size.width / 4.2,
+      child: Material(
+    
+        child: InkWell(
+          onTap: () {
+              item.onTap(item);
+            },
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              SizedBox(
+                width: 100,
+                height: 100,
+                child: AspectRatio(
+                  aspectRatio: 1,
+                  child: Padding(
+                    padding: EdgeInsets.all(16.0),
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.circular(16),
+                      child: ColoredBox(
+                        color: Colors.white,
+                        child: Image.network(
+                          item.imageUrl,
+                          fit: BoxFit.cover,
+                          ),
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+              Text(item.label)
+            ],
           ),
-        Text('Label')
-      ],
+        ),
+      ),
     );
   }
+}
+
+class CategoryListItem {
+  final String label;
+  final String imageUrl;
+  final void Function(CategoryListItem item) onTap;
+
+  CategoryListItem(
+    {
+    required this.label,
+    required this.imageUrl,
+    required this.onTap, 
+  });
+  
+
 }

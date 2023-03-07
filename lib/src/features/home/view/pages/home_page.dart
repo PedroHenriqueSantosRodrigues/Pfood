@@ -57,12 +57,12 @@ class _HomePageState extends State<HomePage>
             body: TabBarView(
               controller: tabController,
               children: [
-                AllStoresWidgets(),
-                RestaurantsWidgets(),
-                MarketsWidgets(),
-                DrinkStoresWidgets(),
-                DrugStoreWidgets(),
-                PetStoresWidgets(),
+                AllStoresWidgets(tabController: tabController),
+                const RestaurantsWidgets(),
+                const MarketsWidgets(),
+                const DrinkStoresWidgets(),
+                const DrugStoreWidgets(),
+                const PetStoresWidgets(),
                 
                 
               ]
