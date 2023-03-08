@@ -27,8 +27,11 @@ class _CategoryItemWidget extends StatelessWidget {
     return SizedBox(
       width: MediaQuery.of(context).size.width / 4.2,
       child: Material(
+        color: Colors.transparent,
+        borderRadius: BorderRadius.circular(8),
     
         child: InkWell(
+          borderRadius: BorderRadius.circular(8),
           onTap: () {
               item.onTap(item);
             },
@@ -45,7 +48,7 @@ class _CategoryItemWidget extends StatelessWidget {
                     child: ClipRRect(
                       borderRadius: BorderRadius.circular(16),
                       child: ColoredBox(
-                        color: Colors.white,
+                        color: Color(0xffF5F8F5),
                         child: Image.network(
                           item.imageUrl,
                           fit: BoxFit.cover,
@@ -55,7 +58,7 @@ class _CategoryItemWidget extends StatelessWidget {
                   ),
                 ),
               ),
-              Text(item.label)
+              Text(item.label, style: TextStyle(fontSize: 12),)
             ],
           ),
         ),

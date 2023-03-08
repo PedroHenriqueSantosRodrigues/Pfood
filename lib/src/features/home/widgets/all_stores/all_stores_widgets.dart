@@ -41,6 +41,17 @@ class _AllStoresWidgetsState extends State<AllStoresWidgets> {
                    onTap: (item) {Navigator.of(context).push(MaterialPageRoute(builder: (context) => Container(color: Colors.red,),));}),
                    
             ],  
+          ),
+          Container(
+            height: 10,
+          ),
+          const CouponsAndNewsWidget(
+            imageList: [
+            'https://gkpb.com.br/wp-content/uploads/2020/03/ifood-tudo-por-099-geek-publicitario.jpg',
+            'https://4.bp.blogspot.com/-RTFxt6j3u2M/WtcH-09IW3I/AAAAAAADJFM/Ri8Ii12idhUcs1M9cYAqrjnwk4ipFSzlgCLcBGAs/s1600/iFood_Festival-da-pizza_release_horizontal180417_095805.png',
+            'https://gkpb.com.br/wp-content/uploads/2020/03/ifood-tudo-por-099-geek-publicitario.jpg',
+            'https://4.bp.blogspot.com/-RTFxt6j3u2M/WtcH-09IW3I/AAAAAAADJFM/Ri8Ii12idhUcs1M9cYAqrjnwk4ipFSzlgCLcBGAs/s1600/iFood_Festival-da-pizza_release_horizontal180417_095805.png'
+            ],
           )
         ],
       );
